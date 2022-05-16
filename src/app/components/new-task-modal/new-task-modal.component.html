@@ -1,0 +1,36 @@
+<form action="needs-validation" novalidate [formGroup]="form">
+  <div style="height: 100px;" class="col-md-12">
+    <input style="height: 20px;"
+      type="text"
+      class="form-control"
+      id="titulo"  
+      placeholder="Título da tarefa"
+      formControlName="title"
+    />
+    <input style="height: 20px;"
+      type="text"
+      class="form-control"
+      id="titulo"  
+      placeholder="Proprietário"
+      formControlName="owner"
+    />
+    <select class="form-control" formControlName="status" >
+        <option [ngValue]="null" disabled>Status da tarefa</option>
+        <option *ngFor="let status of allStatus">
+          {{ status.status }}
+        </option>
+    </select>
+      
+    <input type="date" style="height: 20px;"
+      type="text"
+      class="form-control"
+      id="titulo"  
+      placeholder="Data de entrega"
+      formControlName="date"
+    />
+    <div>
+        <button style="height: 20px;" type="submit" class="button-confirm" (click)="onSubmit()">Salvar</button>
+        <button style="height: 20px;">Cancelar</button>
+    </div>
+  </div>
+</form>

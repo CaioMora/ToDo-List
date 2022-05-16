@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <div class="cma-main-skeleton">
+      <div class="cma-application">
+        <div class="cma-main-dashboard">
+          <div class="cma-header-dashboard">
+            <div class="cma-dashboard">
+              <h4 class="cma-dashboard-name" style="height: 20px">
+                Nome principal do quadro
+              </h4>
+              <p class="cma-dashboard-description" style="height: 20px">
+                descrição do projeto
+              </p>
+            </div>
+          </div>
+          <div class="cma-dashboard-content" style="outline: solid 1px red">
+            <div class="cma-dashboard-action" style="height: 40px">
+              <button class="new-item" (click)="newTask()">Criar Tarefa</button>
+            </div>
+            <div class="cma-dashboard-body">
+              <div class="cma-board-content-wrapper">
+                <div class="cma-board-content-itens">
+                  <ul>
+                    <li *ngFor="let task of taskInfo" style="height: 40px">
+                      <div class="cma-board-item" style="display: flex">
+                        <div class="cma-board-name">
+                          <input
+                            type="text"
+                            disabled
+                            placeholder="{{ task.title }}"
+                          />
+                          <button (click)="editTask(task.id)">editar</button>
+                        </div>
+                        <div class="cma-board-atributes" style="display: flex">
+                          <div class="cma-board-owner">
+                            {{ task.owner }}
+                          </div>
+                          <div class="cma-board-status">
+                            {{ task.status }}
+                          </div>
+                          <div class="cma-board-date">
+                            {{ task.date }}
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
