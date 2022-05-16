@@ -6,7 +6,6 @@ import { Status } from 'src/app/components/new-task-modal/new-task-modal.compone
 import { DashboardService } from 'src/app/services/dashboard.service';
 import { Location } from '@angular/common';
 
-
 @Component({
   selector: 'app-edit-task',
   templateUrl: './edit-task.component.html',
@@ -16,6 +15,7 @@ export class EditTaskComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
 
+  //status disponíveis para as tarefas
   allStatus = [
     new Status('feito'),
     new Status('parado'),
@@ -31,10 +31,11 @@ export class EditTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params
-    .pipe(
-      map((params: any) => params['id']),
-      switchMap(id => this.dashboardService.editTask(id))
-    ).subscribe(task => this.updateForm(task));
+      .pipe(
+        map((params: any) => params['id']),
+        switchMap((id) => this.dashboardService.editTask(id))
+      )
+      .subscribe((task) => this.updateForm(task));
 
     this.form = this.formBuilder.group({
       id: [null],
@@ -45,6 +46,7 @@ export class EditTaskComponent implements OnInit {
     });
   }
 
+  //método de atualização de formulário
   updateForm(task: any) {
     this.form.patchValue({
       id: task.id,
@@ -55,18 +57,16 @@ export class EditTaskComponent implements OnInit {
     });
   }
 
+  //método de atualização de formulário
   onSubmit() {
     console.log(this.form.value);
     if (this.form.valid) {
-      if (this.form.value.id ) {
+      if (this.form.value.id) {
         this.dashboardService.updateTask(this.form.value).subscribe(
-          (success: any) => {console.log('criado com sucesso'); this.location.back()},
-          (error: any) => console.error(error),
-          () => console.log('request completo')
-        );
-      } else {
-        this.dashboardService.createTask(this.form.value).subscribe(
-          (success: any) => console.log('criado com sucesso'),
+          (success: any) => {
+            console.log('criado com sucesso');
+            this.location.back();
+          },
           (error: any) => console.error(error),
           () => console.log('request completo')
         );
@@ -74,8 +74,9 @@ export class EditTaskComponent implements OnInit {
     }
   }
 
+  //cancela a atualização, reseta o formulário e volta para a home
   onCancel() {
     this.form.reset;
-    this.location.back()
+    this.location.back();
   }
 }

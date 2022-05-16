@@ -16,6 +16,7 @@ export class NewTaskModalComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
 
+  //status disponíveis para as tarefas
   allStatus = [
     new Status('feito'),
     new Status('parado'),
@@ -37,17 +38,21 @@ export class NewTaskModalComponent implements OnInit {
     });
   }
 
+  //método de POST para criar uma nova tarefa
   onSubmit() {
     console.log(this.form.value);
     if (this.form.valid) {
       this.dashboardService.createTask(this.form.value).subscribe(
-        (success: any) => {console.log('criado com sucesso'), this.dialogRef.close();},
+        (success: any) => {
+          console.log('criado com sucesso'), this.dialogRef.close();
+        },
         (error: any) => console.error(error),
         () => console.log('request completo')
       );
     }
   }
 
+  //cancela a criação de tarefa, reseta o form e fecha a modal
   onCancel() {
     this.form.reset;
     this.dialogRef.close();
