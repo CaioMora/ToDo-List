@@ -10,6 +10,9 @@ import { NewTaskModalComponent } from './components/new-task-modal/new-task-moda
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditTaskComponent } from './views/edit-task/edit-task.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ProfileComponent } from './views/profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -17,6 +20,7 @@ import { EditTaskComponent } from './views/edit-task/edit-task.component';
     DashboardComponent,
     NewTaskModalComponent,
     EditTaskComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,9 @@ import { EditTaskComponent } from './views/edit-task/edit-task.component';
     MatDialogModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ModalModule.forRoot()    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

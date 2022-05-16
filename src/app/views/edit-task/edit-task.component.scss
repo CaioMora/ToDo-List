@@ -1,5 +1,8 @@
 .cma-form {
-    position: absolute;
+    a{
+        color: #fff;
+    }
+    position: absolute !important;
     color: #323338;
     top: 0;
     right: 0;
@@ -10,4 +13,13 @@
     -o-transition: left 150ms cubic-bezier(0, 0, 0.35, 1);
     transition: left 150ms cubic-bezier(0, 0, 0.35, 1);
     overflow: hidden;
+    margin-top: 30px;
+    padding: 40px;
+}
+.form-group {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    label {
+        color: #fff;
+    }
 }

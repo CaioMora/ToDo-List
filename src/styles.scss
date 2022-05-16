@@ -37,14 +37,12 @@ $ToDo-List-theme: mat.define-light-theme((
 * {
     margin: 0;
     padding: 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    height: 100%;
 }
-html,
-  body {
-    height: 100%;
-}
-html, body { height: 100%; }
+body { height: 100%; background-color: rgb(51, 53, 75) !important;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";

@@ -32,4 +32,8 @@ export class DashboardService {
     return this.http.put(`${this.API}/${task.id}`, task).pipe(take(1));
   }
 
+  deleteTask(id: any) {
+    return this.http.delete(`${this.API}/${id}`).pipe(take(1));
+  }
+
 }

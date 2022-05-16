@@ -5,6 +5,7 @@ import { EditTaskComponent } from './views/edit-task/edit-task.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
+  {path: 'profile',  loadChildren: () => import('../app/views/profile/profile.module').then(x => x.ProfileModule)},
   {path: 'editar/:id', component: EditTaskComponent}
 ];
 
